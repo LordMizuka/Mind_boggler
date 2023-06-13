@@ -8,7 +8,7 @@ public class PlayerCamera : MonoBehaviour
     public Transform player; // Reference to the player's transform
     public float cameraHeight = 5f; //Desired height of the camera above the player
     public Vector3 offset = new Vector3(0f, 0f, -10f); //Offset from the player's position
-
+    //kuyvjuyctuytu
     // Update is called once per frame
    private void LateUpdate()
    {
