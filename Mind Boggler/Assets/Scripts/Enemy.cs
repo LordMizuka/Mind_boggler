@@ -12,6 +12,11 @@ public class Enemy : MonoBehaviour
 
     private bool isAttacking; // If the enemy is currently attacking
 
+    private void ChasePlayer()
+    {
+        thisEnemy.SetDestination(playerPos.position);// Set the enemy's destination to the player.
+    }
+
     private void Start()
     {
         thisEnemy = GetComponent <NavMeshAgent>();
@@ -36,11 +41,6 @@ public class Enemy : MonoBehaviour
             thisEnemy.isStopped = true; // Stop the enemy from moving
             StartCoroutine(AttackPlayer()); // Start attacking the player
         }
-    }
-
-    private void ChasePlayer()
-    {
-
     }
 
     private IEnumerator AttackPlayer()
