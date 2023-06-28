@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
 {
     [Range(0, 50)][SerializeField] float attackRange = 5, sightRange = 20, timeBetweenAttacks = 3;
 
+    [Range(0, 20)][SerializeField] int power;// The amount of damage that the enemy does
+
     private NavMeshAgent thisEnemy;
     public Transform playerPos;
 
