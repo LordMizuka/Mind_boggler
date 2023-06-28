@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
     {
         float distanceFromPlayer = Vector3.Distance(playerPos.position, this.transform.position);// The distance between the player and the enemy
 
-        if (distanceFromPlayer <= sightRange && distanceFromPlayer > attackRange)
+        if (distanceFromPlayer <= sightRange && distanceFromPlayer > attackRange && !PlayerHealth.isDead)
         {
             isAttacking = false;
             StopAllCoroutines();
@@ -36,10 +36,15 @@ public class Enemy : MonoBehaviour
             ChasePlayer();
         }
 
-        if (distanceFromPlayer <= attackRange && !isAttacking)
+        if (distanceFromPlayer <= attackRange && !isAttacking && PlayerHealth.isDead)
         {
             thisEnemy.isStopped = true; // Stop the enemy from moving
             StartCoroutine(AttackPlayer()); // Start attacking the player
+        }
+
+        if (PlayerHealth.isDead)
+        {
+            thisEnemy.isStopped = true;
         }
     }
 
@@ -50,6 +55,8 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(timeBetweenAttacks); // Wait for the time between attacks.
 
         Debug.Log("Hurt player");
+
+        FindObjectOfType<PlayerHealth>().TakeDamage(power);// Damage the player with 'power' damage
 
         isAttacking = false;
     }
