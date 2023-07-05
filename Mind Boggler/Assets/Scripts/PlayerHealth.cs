@@ -8,6 +8,17 @@ public class PlayerHealth : MonoBehaviour
 
     public static bool isDead;
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // Check if the collided object is the player
+        if (other.CompareTag("Player"))
+        {
+            // Destroy the player game object
+            Destroy(other.gameObject);
+        }
+    }
+
     private void start()
     {
         currentHealth = startHealth;// Set the current health to be the start health, when the game starts.
