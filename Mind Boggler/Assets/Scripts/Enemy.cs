@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class Enemy : MonoBehaviour
         {
             // Destroy the player game object
             Destroy(collision.gameObject);
+
+            SceneManager.LoadScene("Game");
         }
     }
 }
